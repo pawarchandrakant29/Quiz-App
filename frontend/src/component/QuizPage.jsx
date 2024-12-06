@@ -14,6 +14,7 @@ import {
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "./api";
 
 const QuizPage = () => {
   const [quizzes, setQuizzes] = useState([]);
@@ -28,7 +29,7 @@ const QuizPage = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/quizzes");
+        const response = await axios.get(`${API_URL}/api/quizzes`);
         setQuizzes(response.data);
       } catch (error) {
         console.error("Error fetching quizzes:", error);
@@ -41,7 +42,7 @@ const QuizPage = () => {
   const handleSelectQuiz = async (quizId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/quizzes/${quizId}`
+        `${API_URL}/api/quizzes/${quizId}`
       );
       setSelectedQuiz(response.data);
       setAnswers(Array(response.data.questions.length).fill(null));

@@ -13,7 +13,13 @@ app.use(bodyParser.json());
 
 // Connect to DB
 connectDB();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 // Routes
 app.use("/api/quizzes", quizRoutes);
 

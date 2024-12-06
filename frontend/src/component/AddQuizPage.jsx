@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { API_URL } from "./api";
 
 const AddQuizPage = () => {
   const [title, setTitle] = useState("");
@@ -42,7 +43,7 @@ const AddQuizPage = () => {
 
   const handleSubmitQuiz = async () => {
     try {
-      await axios.post("http://localhost:5000/api/quizzes/add", {
+      await axios.post(`${API_URL}/api/quizzes/add`, {
         title,
         description,
         timeLimit,
